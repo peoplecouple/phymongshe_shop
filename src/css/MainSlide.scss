@@ -2,7 +2,9 @@
 
 .MainSlide {
   position: relative;
-  padding: 10rem 0 0;
+  padding: 0 0 0 0;
+  transform: translateY(-8rem);
+  height: calc(100vh - 18rem);
 
   .inner {
     position: absolute;

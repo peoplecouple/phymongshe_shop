@@ -3,7 +3,8 @@ import MainNav from './MainNav'
 import Topbanner from './Topbanner'
 import '../css/Header.scss'
 import { FiUser, FiShoppingCart, FiSearch } from "react-icons/fi";
-const Header = () => {
+import { Link } from 'react-router-dom';
+const Header = ({ cart }) => {
   const [on, setOn] = useState(false);
 
   useEffect(() => {
@@ -22,9 +23,10 @@ const Header = () => {
       <Topbanner />
       <div className="gnb">
         <h1>
-          <a href="/">
+          <Link to='/'>
             <img src={process.env.PUBLIC_URL + '/assets/img/top_logo.png'} alt="" />
-          </a>
+          </Link>
+
         </h1>
         <nav className='inner'>
           <MainNav />
@@ -33,7 +35,7 @@ const Header = () => {
           <li><FiUser /></li>
           <li>
             <FiShoppingCart />
-            <span>0</span>
+            <span>{cart.length}</span>
           </li>
           <li><FiSearch /></li>
         </ul>

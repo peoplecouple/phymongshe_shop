@@ -19,7 +19,7 @@ const MainSlide = () => {
         {
           main_content.slice(0, 3).map((el, idx) => {
             return (
-              <figure className={`itm itm0${idx + 1}`}>
+              <figure className={`itm itm0${idx + 1}`} key={el.id}>
                 <div className="inner">
                   <strong>{el.title}</strong>
                   <p>{el.content}</p>
