@@ -8,6 +8,7 @@ import List from './shop/List'
 import Itm from './shop/Itm'
 import Cart from './shop/Cart'
 import './css/ShopDetail.scss'
+import Category from './shop/Category'
 
 //https://desipossa.github.io/shop_cra/assets/data.json
 const App = () => {
@@ -39,26 +40,25 @@ const App = () => {
     }
     getProduct();
   }, [])
+
   return (
     <>
-      <Header cart={cart} />
-
-
-
       {
-        !itm ?
-          <div>로딩중입니다.</div>
-          :
-          <Routes>
-            <Route path='/' element={<Main />} />
-            <Route path='/cart' element={<Cart cart={cart} />} />
-            <Route path='/shopList' element={<List shopList={itm} />} />
-            <Route path='/shopItem/:itm' element={<Itm shopList={itm} cart={cart} setCart={setCart} />} />
-          </Routes>
-
+        itm
+          ?
+          <div className='wrapper'>
+            <Header cart={cart} shopList={itm} />
+            <Routes>
+              <Route path='/' element={<Main shopList={itm} />} />
+              <Route path='/cart' element={<Cart cart={cart} setCart={setCart} />} />
+              <Route path='/shopList' element={<List shopList={itm} />} />
+              <Route path='/shopList/:cate' element={<Category shopList={itm} />} />
+              <Route path='/shopItem/:itm' element={<Itm shopList={itm} cart={cart} setCart={setCart} />} />
+            </Routes>
+            <Footer />
+          </div>
+          : <div>로딩중입니다.</div>
       }
-
-      <Footer />
     </>
   )
 }

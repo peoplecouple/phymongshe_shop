@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, setCart }) => {
+  useEffect(() => {
+    setCart(cart.filter((itm, idx, arry) => idx === arry.findIndex(it => it.id === itm.id)))
+  }, [])
+
+
   return (
     <div>
       {
